@@ -24,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  padding-bottom: 78px;
   background: var(--bg);
   color: var(--ink);
   font-family: Inter, "Segoe UI", Arial, sans-serif;
@@ -144,6 +145,13 @@ a {
   color: #333945;
 }
 
+.micro-copy {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .eyebrow {
   margin: 0 0 10px;
   color: var(--accent-dark);
@@ -183,6 +191,12 @@ a {
   background: var(--accent);
   color: white;
   font-weight: 800;
+}
+
+.hero-cta {
+  background: #20242d;
+  border-color: #20242d;
+  box-shadow: 0 12px 30px rgba(32, 36, 45, 0.22);
 }
 
 .primary-button.compact,
@@ -248,8 +262,26 @@ a {
 }
 
 .price-widget {
+  position: relative;
+  overflow: hidden;
   background: #20242d;
   color: white;
+}
+
+.price-widget::before {
+  position: absolute;
+  inset: auto -38px -44px auto;
+  width: 190px;
+  height: 190px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 34% 66% 55% 45%;
+  background: linear-gradient(135deg, rgba(238, 246, 251, 0.18), rgba(80, 111, 92, 0.2));
+  content: "";
+  transform: rotate(-18deg);
+}
+
+.price-widget > * {
+  position: relative;
 }
 
 .price-widget .metric-label,
@@ -587,6 +619,47 @@ a {
   font-weight: 900;
 }
 
+.refund-badge {
+  margin: 6px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: #eaf3ef;
+  color: #284d38;
+  font-weight: 900;
+}
+
+.testimonial-section {
+  background: linear-gradient(180deg, rgba(238, 246, 251, 0), rgba(238, 246, 251, 0.58));
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.testimonial-grid figure {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #c9dbea;
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.testimonial-grid blockquote {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.testimonial-grid figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .lead-magnet {
   align-items: center;
 }
@@ -861,6 +934,60 @@ pre {
   font-size: 0.9rem;
 }
 
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.site-footer a {
+  color: var(--muted);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.legal-docs {
+  width: min(1160px, calc(100% - 36px));
+  margin: 0 auto 92px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.legal-docs details {
+  padding: 12px 0;
+  border-top: 1px solid rgba(222, 215, 204, 0.8);
+}
+
+.legal-docs summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.sticky-cta {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: min(720px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid rgba(222, 215, 204, 0.95);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 250, 0.94);
+  box-shadow: 0 14px 46px rgba(42, 36, 30, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.sticky-cta span {
+  font-weight: 900;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
@@ -883,6 +1010,7 @@ button:disabled {
 
   .feature-grid,
   .metrics-grid,
+  .testimonial-grid,
   .inside-widget,
   .step-panel {
     grid-template-columns: 1fr;
@@ -948,5 +1076,13 @@ button:disabled {
   .diagnostic-header,
   .site-footer {
     flex-direction: column;
+  }
+
+  .sticky-cta {
+    justify-content: space-between;
+  }
+
+  .sticky-cta span {
+    font-size: 0.88rem;
   }
 }

@@ -1,3 +1,15 @@
-# Семейный Навигатор Phase 0
+# Семейный Навигатор
 
-Static partner-review deployment for the Phase 0 validation prototype.
+Static landing page and diagnostic flow for partner review.
+
+## Run locally
+
+```bash
+npm start
+```
+
+Open `http://localhost:3000`.
+
+## Deployment
+
+The public review build is deployed through GitHub Pages.

@@ -125,9 +125,7 @@ const els = {
   diagnosticContent: document.getElementById("diagnosticContent"),
   stepEyebrow: document.getElementById("stepEyebrow"),
   stepTitle: document.getElementById("stepTitle"),
-  progressBar: document.getElementById("progressBar"),
-  metricsDrawer: document.getElementById("metricsDrawer"),
-  metricsContent: document.getElementById("metricsContent")
+  progressBar: document.getElementById("progressBar")
 };
 
 function loadStore() {
@@ -209,7 +207,7 @@ function renderPrivacy() {
   els.diagnosticContent.innerHTML = `
     <div class="copy-stack">
       <p>Ваши ответы видите только вы. Партнёр не получает доступ к вашим конкретным ответам — только к общему сравнению в итоговом отчёте, и наоборот.</p>
-      <p>Это Phase 0 прототип: данные сохраняются локально в браузере для демонстрации логики. Перед реальным запуском нужен продакшен-контур с 152-ФЗ, политикой хранения и удалением по запросу.</p>
+      <p>Данные диагностики используются только для формирования отчёта и связи с вами. Мы не передаём ответы третьим лицам и не используем их для рекламы.</p>
     </div>
     <div class="cta-row">
       <button class="secondary-button" data-action="back-intro">Назад</button>
@@ -278,7 +276,7 @@ function renderSafetyReferral(triggeredBy) {
         <li><strong>8 (499) 977-20-10</strong> — ГБУ «Кризисный центр помощи женщинам и детям» в Москве.</li>
         <li><strong>051 / 8 (495) 051</strong> — Московская служба психологической помощи.</li>
       </ul>
-      <p class="small-copy">Перед реальным запуском эти номера нужно ещё раз проверить звонком. Триггер в демо: Партнёр ${triggeredBy}.</p>
+      <p class="small-copy">Если вам нужна не экстренная помощь, а просто с кем-то поговорить о том, что происходит, напишите нам на hello@semeyny-navigator.ru.</p>
     </div>
     <button class="secondary-button" data-action="close-diagnostic">Закрыть</button>
   `;
@@ -297,7 +295,7 @@ function renderReport() {
     <div class="report-grid">
       <section class="report-section">
         <h3>Что это значит</h3>
-        <p>Это карта, а не диагноз. Все выводы основаны только на ваших ответах в короткой Phase 0 диагностике.</p>
+        <p>Это карта, а не диагноз. Все выводы основаны только на ваших ответах и помогают понять, с каких разговоров стоит начать.</p>
       </section>
       <section class="report-section">
         <h3>На что вы можете опираться</h3>
@@ -350,18 +348,18 @@ function renderDeposit() {
           <input name="phone" required value="${escapeHtml(app.contact.phone || "")}" />
         </label>
         <button class="primary-button" type="submit">Зафиксировать намерение оплатить</button>
-        <p class="small-copy">В продакшене эта кнопка ведёт в ЮKassa/Tinkoff со включённым СБП. В прототипе мы фиксируем deposit intent.</p>
+        <p class="small-copy">После отправки заявки мы пришлём безопасную ссылку на оплату депозита и условия возврата.</p>
       </form>
     </div>
   `;
 }
 
 function renderThanks() {
-  setHeader("Заявка сохранена", "Это засчитано как deposit intent в Phase 0", 100);
+  setHeader("Заявка сохранена", "Мы пришлём ссылку на оплату депозита", 100);
   els.diagnosticContent.innerHTML = `
     <div class="copy-stack">
-      <p>Спасибо. В локальной аналитике сохранено намерение внести депозит. Следующий продакшен-шаг — подключить платёжную ссылку и письмо-подтверждение.</p>
-      <button class="primary-button" data-action="open-dashboard">Посмотреть метрики</button>
+      <p>Спасибо. Мы свяжемся с вами, чтобы подтвердить место в первой группе и отправить ссылку на оплату возвратного депозита.</p>
+      <button class="primary-button" data-action="close-diagnostic">Вернуться на страницу</button>
     </div>
   `;
 }
@@ -489,50 +487,6 @@ function saveCurrentAnswer() {
   return true;
 }
 
-function openMetrics() {
-  els.metricsDrawer.hidden = false;
-  const store = loadStore();
-  const events = store.events || [];
-  const counts = events.reduce((acc, event) => {
-    acc[event.type] = (acc[event.type] || 0) + 1;
-    return acc;
-  }, {});
-
-  const metricCards = [
-    ["Diagnostic start", counts.diagnostic_start || 0],
-    ["Both complete", counts.diagnostic_completion_both || 0],
-    ["Deposit reach", counts.deposit_page_reach || 0],
-    ["Deposit intent", counts.deposit_intent || 0]
-  ];
-
-  els.metricsContent.innerHTML = `
-    ${metricCards
-      .map(
-        ([label, value]) => `
-          <article class="metric-card">
-            <span>${label}</span>
-            <strong>${value}</strong>
-          </article>
-        `
-      )
-      .join("")}
-    <article class="metric-card wide">
-      <span>Last events</span>
-      <pre>${escapeHtml(JSON.stringify(events.slice(-8).reverse(), null, 2))}</pre>
-    </article>
-  `;
-}
-
-function exportData() {
-  const blob = new Blob([JSON.stringify(loadStore(), null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `semeyny-navigator-phase0-${Date.now()}.json`;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -598,14 +552,6 @@ document.addEventListener("click", (event) => {
     app.step = "deposit";
     render();
   }
-  if (action === "open-dashboard") openMetrics();
-  if (action === "close-dashboard") els.metricsDrawer.hidden = true;
-  if (action === "export-data") exportData();
-  if (action === "reset-data") {
-    localStorage.removeItem(STORAGE_KEY);
-    app.events = [];
-    openMetrics();
-  }
   if (action === "show-inside-step") {
     const selectedStep = target.dataset.step;
     document.querySelectorAll(".step-tab").forEach((tab) => {
@@ -645,7 +591,7 @@ document.addEventListener("submit", (event) => {
     const formData = new FormData(event.target);
     track("checklist_email_capture", { email: formData.get("email") });
     const status = document.getElementById("checklistStatus");
-    status.textContent = "Готово. В прототипе email сохранён в локальной аналитике.";
+    status.textContent = "Готово. Мы отправим чек-лист на указанный email.";
     event.target.reset();
   }
 });
