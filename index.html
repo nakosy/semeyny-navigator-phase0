@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Семейный Навигатор · Phase 0</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Семейный Навигатор">
+        <span class="brand-mark">СН</span>
+        <span>Семейный Навигатор</span>
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#fit">Для кого</a>
+        <a href="#inside">Что внутри</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="ghost-button compact" data-action="open-dashboard">Метрики</button>
+        <button class="primary-button compact" data-action="start-diagnostic">Начать диагностику пары</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Перезагрузка брака · Phase 0</p>
+          <h1>Любовь есть. А жить вместе всё равно тяжело.</h1>
+          <div class="social-proof" aria-label="Социальное доказательство">
+            <strong>150+ пар</strong>
+            <span>уже прошли диагностику в пилотной системе</span>
+          </div>
+          <p class="lead">
+            8-недельная программа для пар, которые устали ссориться по одному и тому же кругу.
+            Диагностика отношений, понятная структура и конкретный результат — обновлённые
+            договорённости, по которым вам действительно легче жить вместе.
+          </p>
+          <p>
+            Это не терапия и не книги по саморазвитию. Это система, которую вы выстроите вдвоём.
+          </p>
+          <div class="cta-row">
+            <button class="primary-button" data-action="start-diagnostic">Получить отчёт по нашим отношениям</button>
+            <a class="text-link" href="#offer">Записаться в первую группу</a>
+          </div>
+          <p class="trust-line">
+            В основе — методики Готтмана и эмоционально-фокусированной терапии. Без обесценивания,
+            без «починить партнёра», без обещаний спасти любой брак.
+          </p>
+        </div>
+        <aside class="hero-panel price-widget" aria-label="Условия первой группы">
+          <div class="price-row">
+            <span class="metric-label">Программа</span>
+            <strong>29 900 ₽</strong>
+            <p>за пару в первой группе</p>
+          </div>
+          <div class="deposit-chip">
+            <span>Депозит</span>
+            <strong>2 500 ₽</strong>
+            <small>возвратный до старта</small>
+          </div>
+          <div class="start-row">
+            <span class="metric-label">Старт</span>
+            <strong>15 июля · до 20 пар</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section id="fit" class="section two-column">
+        <div class="fit-card fit-card-positive">
+          <p class="eyebrow">Для кого</p>
+          <h2>Это для вас, если</h2>
+          <ul class="check-list">
+            <li>вы любите друг друга, но всё чаще попадаете в одни и те же конфликты;</li>
+            <li>разговоры о деньгах, быте, близости или детях заканчиваются ссорой или молчанием;</li>
+            <li>вы чувствуете, что отдалились, хотя внешне всё в порядке;</li>
+            <li>вы хотите не «перетерпеть и забыть», а разобраться и договориться по-настоящему;</li>
+            <li>вы оба готовы выделять 2–3 часа в неделю на работу над отношениями.</li>
+          </ul>
+        </div>
+        <div class="fit-card fit-card-warning">
+          <p class="eyebrow">Не для кого</p>
+          <h2>Это не для вас, если</h2>
+          <ul class="check-list muted-list">
+            <li>в отношениях есть физическое или психологическое насилие;</li>
+            <li>один из партнёров находится в активной зависимости;</li>
+            <li>решение расстаться уже принято;</li>
+            <li>вы хотите, чтобы кто-то «починил» партнёра вместо вас;</li>
+            <li>есть острый кризис, где нужна срочная помощь специалиста.</li>
+          </ul>
+          <p class="small-copy">
+            Если что-то из второго списка про вас — напишите на
+            <a href="mailto:help@sem-nav.example">help@sem-nav.example</a>. Сейчас это демо-адрес:
+            перед реальным запуском его нужно заменить и мониторить человеком.
+          </p>
+        </div>
+      </section>
+
+      <section id="inside" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Что внутри</p>
+          <h2>Сначала карта отношений, потом решение о программе</h2>
+        </div>
+        <div class="inside-widget">
+          <div class="step-tabs" role="tablist" aria-label="Как работает диагностика">
+            <button class="step-tab active" id="tab-separate" role="tab" aria-selected="true" aria-controls="panel-separate" data-action="show-inside-step" data-step="separate">
+              <span>1</span>
+              Отвечаете отдельно
+            </button>
+            <button class="step-tab" id="tab-compare" role="tab" aria-selected="false" aria-controls="panel-compare" data-action="show-inside-step" data-step="compare">
+              <span>2</span>
+              Сравниваем ответы
+            </button>
+            <button class="step-tab" id="tab-priority" role="tab" aria-selected="false" aria-controls="panel-priority" data-action="show-inside-step" data-step="priority">
+              <span>3</span>
+              Выбираем приоритеты
+            </button>
+          </div>
+          <div class="step-panels">
+            <article class="step-panel active" id="panel-separate" role="tabpanel" aria-labelledby="tab-separate" data-step-panel="separate">
+              <div>
+                <h3>Каждый отвечает без давления</h3>
+                <p>Партнёры проходят диагностику по отдельности. Конкретные ответы не показываются второму человеку, поэтому картина получается честнее.</p>
+              </div>
+              <div class="mini-flow" aria-hidden="true">
+                <span>Партнёр A</span>
+                <i></i>
+                <span>Партнёр B</span>
+              </div>
+            </article>
+            <article class="step-panel" id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" data-step-panel="compare" hidden>
+              <div>
+                <h3>Отчёт показывает карту, а не диагноз</h3>
+                <p>Вы видите зоны опоры, напряжения и расхождения. В чувствительных темах отчёт не раскрывает, кто именно чем недоволен.</p>
+              </div>
+              <div class="report-teaser" aria-label="Пример тизера отчёта">
+                <div><span>Коммуникация</span><strong>78</strong></div>
+                <div><span>Быт и роли</span><strong>42</strong></div>
+                <div><span>Близость</span><strong>разное видение</strong></div>
+              </div>
+            </article>
+            <article class="step-panel" id="panel-priority" role="tabpanel" aria-labelledby="tab-priority" data-step-panel="priority" hidden>
+              <div>
+                <h3>Три зоны становятся началом программы</h3>
+                <p>Пара получает понятный порядок: с чего начать, какой артефакт собрать и какой разговор отложить до момента, когда уже есть опора.</p>
+              </div>
+              <div class="priority-preview" aria-hidden="true">
+                <span>1. Конфликты</span>
+                <span>2. Быт</span>
+                <span>3. Эмоциональный контакт</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="week-path" aria-label="8-недельный путь программы">
+          <div><span>1</span><strong>Карта</strong></div>
+          <div><span>2</span><strong>Разговор</strong></div>
+          <div><span>3</span><strong>Конфликт</strong></div>
+          <div><span>4</span><strong>Быт</strong></div>
+          <div><span>5</span><strong>Контакт</strong></div>
+          <div><span>6</span><strong>Доверие</strong></div>
+          <div><span>7</span><strong>Близость</strong></div>
+          <div><span>8</span><strong>Договор</strong></div>
+        </div>
+      </section>
+
+      <section class="section credibility-section">
+        <div>
+          <p class="eyebrow">На чём построено</p>
+          <h2>Доказательные подходы без громких обещаний</h2>
+          <p>
+            Программа опирается не на «авторский метод», а на исследования Джона Готтмана и
+            эмоционально-фокусированную терапию Сью Джонсон. Мы не обещаем спасти любой брак.
+            Мы даём паре структуру и инструменты: слышать друг друга, договариваться и проходить
+            конфликт, не разрушая связь.
+          </p>
+        </div>
+        <div class="note-card">
+          <h3>Блок доверия нужно заменить</h3>
+          <p>
+            Перед запуском выберите вариант эксперта из спецификации: реальный семейный психолог,
+            founder-led версия или methodology-only. Не выдумывайте регалии.
+          </p>
+        </div>
+      </section>
+
+      <section id="offer" class="section offer-band">
+        <div>
+          <p class="eyebrow">Первая группа</p>
+          <h2>Внесите возвратный депозит после диагностики</h2>
+          <p>
+            Полная цена программы в тестовом предложении: 29 900 ₽ за пару. Депозит 2 500 ₽
+            фиксирует место и полностью возвращается по запросу до старта группы.
+          </p>
+        </div>
+        <div class="offer-price-card">
+          <span>Полная цена</span>
+          <strong>29 900 ₽</strong>
+          <em>Депозит сегодня: 2 500 ₽</em>
+          <button class="primary-button" data-action="start-diagnostic">Начать диагностику пары</button>
+        </div>
+      </section>
+
+      <section class="section lead-magnet">
+        <div>
+          <p class="eyebrow">Не готовы записываться?</p>
+          <h2>Получите чек-лист для мягкого старта</h2>
+          <p>«5 признаков того, что паре пора пройти диагностику» поможет понять, стоит ли начинать разговор сейчас.</p>
+        </div>
+        <form class="email-capture" id="checklistForm">
+          <label>Email
+            <input name="email" type="email" required placeholder="name@example.com" />
+          </label>
+          <button class="secondary-button" type="submit">Скачать чек-лист</button>
+          <p class="small-copy" id="checklistStatus" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="faq" class="section faq-section">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Частые вопросы</h2>
+        </div>
+        <details open>
+          <summary>Мой партнёр сомневается или пока не готов. Что делать?</summary>
+          <p>Начните с диагностики: пройдите её сами, а партнёру предложите ответить по своей ссылке — без обязательств и давления.</p>
+        </details>
+        <details>
+          <summary>Это терапия?</summary>
+          <p>Нет. Это образовательная система со структурой, инструментами и практикой. Она не заменяет психотерапию.</p>
+        </details>
+        <details>
+          <summary>Насколько это конфиденциально?</summary>
+          <p>Партнёр не видит конкретные ответы — только общий уровень расхождения по зонам в итоговом отчёте.</p>
+        </details>
+        <details>
+          <summary>А если у нас серьёзный кризис?</summary>
+          <p>Если есть насилие, активная зависимость или риск для жизни, нужна не программа, а живой специалист и безопасность.</p>
+        </details>
+      </section>
+    </main>
+
+    <section id="diagnosticApp" class="diagnostic-shell" hidden>
+      <div class="diagnostic-card">
+        <div class="diagnostic-header">
+          <div>
+            <p class="eyebrow" id="stepEyebrow">Карта отношений</p>
+            <h2 id="stepTitle">С чего начать? С того, чтобы увидеть, где вы на самом деле.</h2>
+          </div>
+          <button class="icon-button" data-action="close-diagnostic" aria-label="Закрыть">×</button>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+        <div id="diagnosticContent"></div>
+      </div>
+    </section>
+
+    <section id="metricsDrawer" class="drawer" hidden>
+      <div class="drawer-panel">
+        <div class="diagnostic-header">
+          <div>
+            <p class="eyebrow">Phase 0 analytics</p>
+            <h2>Локальные метрики воронки</h2>
+          </div>
+          <button class="icon-button" data-action="close-dashboard" aria-label="Закрыть">×</button>
+        </div>
+        <div id="metricsContent" class="metrics-grid"></div>
+        <div class="cta-row">
+          <button class="secondary-button" data-action="export-data">Экспорт JSON</button>
+          <button class="ghost-button danger" data-action="reset-data">Сбросить демо-данные</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© 2026 Семейный Навигатор. Phase 0 validation prototype.</p>
+      <p>Заменить перед запуском: юрлицо, оферта, политика конфиденциальности, реальный inbox, платёжная ссылка.</p>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
